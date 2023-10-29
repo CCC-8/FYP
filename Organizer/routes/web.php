@@ -29,3 +29,11 @@ Route::get('/CrewManagement', function () {
 Route::get('/Calendar', function () {
     return view('Calendar');
 });
+
+Route::get('/Login', function () {
+    return file_get_contents(__DIR__ . '/../resources/pages/Login.html');
+});
+
+Route::get('/Register', function () {
+    return file_get_contents(__DIR__ . '/../resources/pages/Register.html');
+});

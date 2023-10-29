@@ -25,6 +25,8 @@
     <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel ="stylesheet" href ="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel ="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
@@ -39,22 +41,22 @@
 
         <nav id="navbar" class="navbar nav-menu">
             <ul>
-                <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a>
+                <li><a href="/" class="nav-link "><i class="bx bx-home"></i> <span>Home</span></a>
                 </li>
-                <li><a href="/AccountManagement" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Account
-                            Management</span></a></li>
-                <li><a href="/EventManagement" class="nav-link scrollto"><i class="bx bx-abacus"></i> <span>Event
-                            Management</span></a></li>
-                <li><a href="/DealershipManagement" class="nav-link scrollto"><i class="bx bx-network-chart"></i>
-                        <span>Dealership Management</span></a></li>
-                <li><a href="/VenueManagement" class="nav-link scrollto"><i class="bx bx-map-pin"></i> <span>Venue
-                            Management</span></a></li>
-                <li><a href="/CrewManagement" class="nav-link scrollto"><i class="bx bx-face"></i> <span>Crew
-                            Management</span></a></li>
-                <li><a href="/Calendar" class="nav-link scrollto"><i class="bx bx-calendar"></i>
+                <li><a href="/AccountManagement" class="nav-link "><i class="bx bx-user"></i>
+                        <span>Account</span></a></li>
+                <li><a href="/EventManagement" class="nav-link "><i class="bx bx-abacus"></i>
+                        <span>Event</span></a></li>
+                <li><a href="/DealershipManagement" class="nav-link "><i class="bx bx-network-chart"></i>
+                        <span>Dealership</span></a></li>
+                <li><a href="/VenueManagement" class="nav-link "><i class="bx bx-map-pin"></i>
+                        <span>Venue</span></a></li>
+                <li><a href="/CrewManagement" class="nav-link "><i class="bx bx-face"></i>
+                        <span>Crew</span></a></li>
+                <li><a href="/Calendar" class="nav-link "><i class="bx bx-calendar"></i>
                         <span>Calendar</span></a></li>
-                <li><a href="/Logout" class="nav-link scrollto"><i class="bx bx-log-out"></i>
-                        <span>Logout</span></a></li>
+                <li><a href="/Login" class="nav-link "><i class="bx bx-log-out"></i>
+                        <span>Login</span></a></li>
             </ul>
         </nav><!-- .nav-menu -->
 
@@ -78,9 +80,103 @@
     <script src="/assets/vendor/typed.js/typed.umd.js"></script>
     <script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="/assets/vendor/php-email-form/validate.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.9/index.global.min.js'></script>
 
     <!-- Template Main JS File -->
     <script src="/assets/js/main.js"></script>
+
+    {{-- DataTable --}}
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
+
+    {{-- Nav Bar Active Status --}}
+    <script>
+        $(document).ready(function() {
+            // Get the current URL path
+            var currentPath = window.location.pathname;
+
+            // Loop through each nav link and compare the link's href to the current path
+            $("#navbar ul li a").each(function() {
+                var link = $(this).attr("href");
+
+                // Check if the link matches the current path
+                if (link === currentPath) {
+                    $(this).addClass("active");
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                initialDate: '2023-09-07',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [{
+                        title: 'All Day Event',
+                        start: '2023-09-01'
+                    },
+                    {
+                        title: 'Long Event',
+                        start: '2023-09-07',
+                        end: '2023-09-10'
+                    },
+                    {
+                        groupId: '999',
+                        title: 'Repeating Event',
+                        start: '2023-09-09T16:00:00'
+                    },
+                    {
+                        groupId: '999',
+                        title: 'Repeating Event',
+                        start: '2023-09-16T16:00:00'
+                    },
+                    {
+                        title: 'Conference',
+                        start: '2023-09-11',
+                        end: '2023-09-13'
+                    },
+                    {
+                        title: 'Meeting',
+                        start: '2023-09-12T10:30:00',
+                        end: '2023-09-12T12:30:00'
+                    },
+                    {
+                        title: 'Lunch',
+                        start: '2023-09-12T12:00:00'
+                    },
+                    {
+                        title: 'Meeting',
+                        start: '2023-09-12T14:30:00'
+                    },
+                    {
+                        title: 'Birthday Party',
+                        start: '2023-09-13T07:00:00'
+                    },
+                    {
+                        title: 'Click for Google',
+                        url: 'https://google.com/',
+                        start: '2023-09-28'
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
 
 </body>
 
