@@ -114,6 +114,8 @@
             });
         });
     </script>
+
+    {{-- Calendar API --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');

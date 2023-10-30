@@ -1,5 +1,88 @@
 @extends('_DEALER')
 @section('body')
+    <!-- ======= Profile Section ======= -->
+    <section id="profile" class="profile">
+
+        <div class="about-me container">
+
+            <div class="section-title">
+                <h2>Profile</h2>
+                <p>Manage Dealer Profile</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <img src="/assets/img/me.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+                    <h3>(Dealer Name Here)</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May 1995</span>
+                                </li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
+                                    <span>www.example.com</span>
+                                </li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456 7890</span>
+                                </li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York, USA</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                                    <span>email@example.com</span>
+                                </li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary mt-5" data-bs-toggle="modal"
+                        data-bs-target="#editProfileModal"
+                        style="position: absolute; left: 50%; background: #18d26e; border: 0; padding: 10px 30px;
+                        color: #fff; transition: 0.4s; border-radius: 4px;">Edit
+                        Profile</button>
+
+                    {{-- <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="background: grey">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Your form goes here -->
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="username">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+    </section><!-- End Profile Section -->
+
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
 
@@ -277,7 +360,8 @@
                                 semper.
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
-                            <img src="/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                            <img src="/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img"
+                                alt="">
                             <h3>Saul Goodman</h3>
                             <h4>Ceo &amp; Founder</h4>
                         </div>
@@ -292,7 +376,8 @@
                                 culpa.
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
-                            <img src="/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                            <img src="/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img"
+                                alt="">
                             <h3>Sara Wilsson</h3>
                             <h4>Designer</h4>
                         </div>
@@ -306,7 +391,8 @@
                                 duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
-                            <img src="/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                            <img src="/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img"
+                                alt="">
                             <h3>Jena Karlis</h3>
                             <h4>Store Owner</h4>
                         </div>
@@ -321,7 +407,8 @@
                                 labore illum veniam.
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
-                            <img src="/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                            <img src="/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img"
+                                alt="">
                             <h3>Matt Brandon</h3>
                             <h4>Freelancer</h4>
                         </div>
@@ -336,7 +423,8 @@
                                 nisi cillum quid.
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
-                            <img src="/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                            <img src="/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img"
+                                alt="">
                             <h3>John Larson</h3>
                             <h4>Entrepreneur</h4>
                         </div>
@@ -353,88 +441,6 @@
         </div><!-- End Testimonials  -->
 
     </section><!-- End About Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Resume</h2>
-                <p>Check My Resume</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <h3 class="resume-title">Sumary</h3>
-                    <div class="resume-item pb-0">
-                        <h4>Alice Barkley</h4>
-                        <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and
-                                developing user-centered digital/print marketing material from initial concept to final,
-                                polished deliverable.</em></p>
-                        <p>
-                        <ul>
-                            <li>Portland par 127,Orlando, FL</li>
-                            <li>(123) 456-7891</li>
-                            <li>alice.barkley@example.com</li>
-                        </ul>
-                        </p>
-                    </div>
-
-                    <h3 class="resume-title">Education</h3>
-                    <div class="resume-item">
-                        <h4>Master of Fine Arts &amp; Graphic Design</h4>
-                        <h5>2015 - 2016</h5>
-                        <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                        <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero
-                            voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-                    </div>
-                    <div class="resume-item">
-                        <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-                        <h5>2010 - 2014</h5>
-                        <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                        <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel
-                            ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur
-                            neque etlon sader mart dila</p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="resume-title">Professional Experience</h3>
-                    <div class="resume-item">
-                        <h4>Senior graphic design specialist</h4>
-                        <h5>2019 - Present</h5>
-                        <p><em>Experion, New York, NY </em></p>
-                        <p>
-                        <ul>
-                            <li>Lead in the design, development, and implementation of the graphic, layout, and production
-                                communication materials</li>
-                            <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of
-                                the project. </li>
-                            <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy
-                                of the design</li>
-                            <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-                        </ul>
-                        </p>
-                    </div>
-                    <div class="resume-item">
-                        <h4>Graphic design specialist</h4>
-                        <h5>2017 - 2018</h5>
-                        <p><em>Stepping Stone Advertising, New York, NY</em></p>
-                        <p>
-                        <ul>
-                            <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and
-                                advertisements).</li>
-                            <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                            <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                            <li>Created 4+ design presentations and proposals a month for clients and account managers
-                            </li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End Resume Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -498,186 +504,6 @@
 
         </div>
     </section><!-- End Services Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Portfolio</h2>
-                <p>My Works</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12 d-flex justify-content-center">
-                    <ul id="portfolio-flters">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-card">Card</li>
-                        <li data-filter=".filter-web">Web</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row portfolio-container">
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 1</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 2</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 2</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>App</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 1</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 3</h4>
-                            <p>Card</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-wrap">
-                        <img src="/assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <div class="portfolio-links">
-                                <a href="/assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery"
-                                    data-glightbox="type: external" class="portfolio-details-lightbox"
-                                    title="Portfolio Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section><!-- End Portfolio Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
