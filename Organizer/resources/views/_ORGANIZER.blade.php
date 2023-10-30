@@ -100,14 +100,12 @@
     {{-- Nav Bar Active Status --}}
     <script>
         $(document).ready(function() {
-            // Get the current URL path
+
             var currentPath = window.location.pathname;
 
-            // Loop through each nav link and compare the link's href to the current path
             $("#navbar ul li a").each(function() {
                 var link = $(this).attr("href");
 
-                // Check if the link matches the current path
                 if (link === currentPath) {
                     $(this).addClass("active");
                 }

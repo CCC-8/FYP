@@ -31,7 +31,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Playfair Display", serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -639,6 +639,71 @@ h6 {
     transform: scale(1, 1);
     opacity: 0;
   }
+}
+
+/*--------------------------------------------------------------
+# Event Details
+--------------------------------------------------------------*/
+.event-details {
+  padding-top: 40px;
+}
+
+.event-details .event-details-slider img {
+  width: 100%;
+}
+
+.event-details .event-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.event-details .event-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #0563bb;
+}
+
+.event-details .event-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #0563bb;
+}
+
+.event-details .event-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(163, 185, 207, 0.08)
+}
+
+.event-details .event-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.event-details .event-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.event-details .event-info ul li+li {
+  margin-top: 10px;
+}
+
+.event-details .event-description {
+  padding-top: 30px;
+}
+
+.event-details .event-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.event-details .event-description p {
+  padding: 0;
 }
 
 /*--------------------------------------------------------------
@@ -1420,7 +1485,7 @@ section {
 }
 
 .chefs .member:hover .member-info-content {
-  bottom: 60px;
+  bottom: 40px;
   transition: bottom 0.4s;
 }
 
