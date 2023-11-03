@@ -1,4 +1,4 @@
-@extends('_USER')
+@extends('User/_USER')
 @section('body')
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">

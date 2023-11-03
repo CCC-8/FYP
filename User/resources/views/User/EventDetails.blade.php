@@ -1,4 +1,4 @@
-@extends('_USER')
+@extends('User/_USER')
 @section('body')
     <main id="main">
 
