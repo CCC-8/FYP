@@ -45,6 +45,7 @@
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="nav-link" href="/">Home</a></li>
+                    <li><a class="nav-link" href="/Events">Events</a></li>
                     <li><a class="nav-link" href="/EventDetails">Event Details</a></li>
                     <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>

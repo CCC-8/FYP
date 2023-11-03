@@ -27,7 +27,7 @@
                 </div>
 
             </div>
-        </section><!-- End Portfolio Details Section -->
+        </section><!-- End Event Details Section -->
 
     </main><!-- End #main -->
 @endsection

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <h1>Welcome to <span>Restaurantly</span></h1>
-                    <h2>Delivering great food for more than 18 years!</h2>
+                    <h2>Ignite your passion for car racing and embark on an exciting journey!</h2>
 
                     <div class="btns">
                         <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
@@ -20,7 +20,7 @@
 
     <main id="main">
 
-        <!-- ======= Chefs Section ======= -->
+        <!-- ======= Events Section ======= -->
         <section id="chefs" class="chefs">
             <div class="container" data-aos="fade-up">
 
@@ -33,7 +33,8 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="assets/img/hero-bg.jpg" class="img-fluid" alt="" style="height: 300px; object-fit: cover;">
+                            <img src="assets/img/hero-bg.jpg" class="img-fluid" alt=""
+                                style="height: 300px; object-fit: cover;">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>Event Name Here</h4>
@@ -45,7 +46,8 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="assets/img/testimg1.jpg" class="img-fluid" alt="" style="height: 300px; object-fit: cover;">
+                            <img src="assets/img/testimg1.jpg" class="img-fluid" alt=""
+                                style="height: 300px; object-fit: cover;">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>Event Name Here</h4>
@@ -57,7 +59,8 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="assets/img/testimg2.jpg" class="img-fluid" alt="" style="height: 300px; object-fit: cover;">
+                            <img src="assets/img/testimg2.jpg" class="img-fluid" alt=""
+                                style="height: 300px; object-fit: cover;">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>Event Name Here</h4>
@@ -69,7 +72,8 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="assets/img/testimg3.jpg" class="img-fluid" alt="" style="height: 300px; object-fit: cover;">
+                            <img src="assets/img/testimg3.jpg" class="img-fluid" alt=""
+                                style="height: 300px; object-fit: cover;">
                             <div class="member-info">
                                 <div class="member-info-content">
                                     <h4>Event Name Here</h4>
@@ -79,6 +83,11 @@
                         </div>
                     </div>
 
+                </div>
+                <div class="container">
+                    <div class="row pt-4" style="float: right">
+                        <a href="/Events"><button class="btn">View All Events</button></a>
+                    </div>
                 </div>
 
             </div>
