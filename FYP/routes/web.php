@@ -40,6 +40,9 @@ Route::get('/Register', function () {
     return file_get_contents(base_path('resources/views/Organizer/pages/Register.html'));
 });
 
+Route::post('/OrganizerIndex', 'UserController@organizerRegister')->name('organizer.register');
+
+
 // ------------------------------- Dealer Routes -------------------------------
 
 Route::get('/DealerIndex', function () {
@@ -59,4 +62,3 @@ Route::get('/Events', function () {
 Route::get('/EventDetails', function () {
     return view('User/EventDetails');
 });
-
