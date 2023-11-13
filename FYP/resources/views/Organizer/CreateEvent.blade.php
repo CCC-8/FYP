@@ -14,20 +14,20 @@
                 <textarea name="description" class="form-control" required></textarea>
             </div>
             <div class="form-group">
-                <label for="date">Start Date:</label>
-                <input type="date" name="date" class="form-control" required>
+                <label for="startDate">Start Date:</label>
+                <input type="date" name="startDate" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="time">Start Time:</label>
-                <input type="text" name="time" class="form-control" required>
+                <label for="startTime">Start Time:</label>
+                <input type="text" name="startTime" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="date">End Date:</label>
-                <input type="date" name="date" class="form-control" required>
+                <label for="endDate">End Date:</label>
+                <input type="date" name="endDate" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="time">End Time:</label>
-                <input type="text" name="time" class="form-control" required>
+                <label for="endTime">End Time:</label>
+                <input type="text" name="endTime" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="status">Status:</label>
