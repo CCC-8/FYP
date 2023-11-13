@@ -1,12 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $fillable = ['title', 'description', 'public', 'date', 'venue_id'];
+    protected $table = 'events';
+
+    protected $fillable = ['name', 'description', 'startDate', 'startTime', 'endDate', 'endTime','status', 'venue', 'type'];
+
+    public $timestamps = false;
 
     public function organizer()
     {

@@ -104,7 +104,7 @@ class UserController extends Controller
 
         $organizer->save();
 
-        return redirect('/OrganizerIndex')->with('info', 'Payment Successful');
+        return redirect('/OrganizerIndex')->with('info', 'User registered successfully');
     }
 
     public function resetPassword(Request $request)
