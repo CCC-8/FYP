@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\Event;
-use App\Crew;
-use App\Dealer;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Event;
+use App\Models\Crew;
+use App\Models\Dealer;
 
 class UserController extends Controller
 {
@@ -31,10 +32,19 @@ class UserController extends Controller
 
     public function organizerLogin(Request $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => 'organizer'])) {
-            return redirect()->route('/OrganizerIndex');
+        $name = $request->input('name');
+        $password = $request->input('password');
+
+        $user = DB::table('users')
+            ->where('name', $name)
+            ->where('user_type', 'organizer')
+            ->first();
+
+        if ($user && password_verify($password, $user->password)) {
+            session(['loggedInUser' => $user]);
+            return redirect('/OrganizerIndex')->with('info', 'Login successful');
         } else {
-            return back()->with('error', 'Invalid login credentials');
+            return redirect()->back()->with('error', 'Invalid credentials');
         }
     }
 
@@ -91,7 +101,6 @@ class UserController extends Controller
             'email' => 'required|string|email|unique:users',
             'contactNo' => 'required|string|max:12|unique:users',
             'password' => 'required|string|min:8',
-            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $organizer = new User([
@@ -105,13 +114,14 @@ class UserController extends Controller
         $organizer->save();
 
         return redirect('/OrganizerIndex')->with('info', 'User registered successfully');
+        dd($organizer);
     }
 
     public function resetPassword(Request $request)
     {
     }
 
-    public function manageUserProfile(Request $request)
+    public function editUserProfile(Request $request)
     {
         $user = auth()->user();
 
@@ -139,11 +149,11 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 
-    public function manageDealerProfile(Request $request)
+    public function editDealerProfile(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:dealers,email,' . auth()->user()->dealer->id,
+            'email' => 'required|email|unique:users,email,' . auth()->user()->dealer->id,
             'contactNo' => 'required|string|max:15',
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -165,16 +175,19 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 
-    public function manageOrganizerProfile(Request $request)
+    public function editOrganizerProfile(Request $request)
     {
+        $loggedInUser = session('loggedInUser');
+
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . auth()->id(),
+            'email' => 'required|email|unique:users,email,' . $loggedInUser->id,
             'contactNo' => 'required|string|max:15',
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $user = User::find(auth()->id());
+        $user = User::find($loggedInUser->id);
+
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->contactNo = $request->input('contactNo');
@@ -188,6 +201,9 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with('success', 'Profile updated successfully.');
+        $updatedUser = User::find($loggedInUser->id);
+        session(['loggedInUser' => $updatedUser]);
+
+        return redirect('/OrganizerIndex')->with('success', 'Profile updated successfully.');
     }
 }

@@ -39,27 +39,6 @@
     <!-- ======= Header ======= -->
     <header id="header" class="d-flex flex-column justify-content-center">
 
-        <nav id="navbar" class="navbar nav-menu">
-            <ul>
-                <li><a href="/OrganizerIndex" class="nav-link "><i class="bx bx-home"></i> <span>Home</span></a>
-                </li>
-                <li><a href="/AccountManagement" class="nav-link "><i class="bx bx-user"></i>
-                        <span>Account</span></a></li>
-                <li><a href="/EventManagement" class="nav-link "><i class="bx bx-abacus"></i>
-                        <span>Event</span></a></li>
-                <li><a href="/DealershipManagement" class="nav-link "><i class="bx bx-network-chart"></i>
-                        <span>Dealership</span></a></li>
-                <li><a href="/VenueManagement" class="nav-link "><i class="bx bx-map-pin"></i>
-                        <span>Venue</span></a></li>
-                <li><a href="/CrewManagement" class="nav-link "><i class="bx bx-face"></i>
-                        <span>Crew</span></a></li>
-                <li><a href="/Calendar" class="nav-link "><i class="bx bx-calendar"></i>
-                        <span>Calendar</span></a></li>
-                <li><a href="/OrganizerLogin" class="nav-link "><i class="bx bx-log-out"></i>
-                        <span>Login</span></a></li>
-            </ul>
-        </nav><!-- .nav-menu -->
-
     </header><!-- End Header -->
 
     <main>

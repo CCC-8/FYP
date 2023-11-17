@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('contactNo');
             $table->string('password');
             $table->string('image')->nullable();
+            $table->string('user_type');
         });
     }
 

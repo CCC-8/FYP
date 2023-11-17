@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // ------------------------------- Organizer Routes -------------------------------
@@ -12,6 +13,8 @@ Route::get('/OrganizerIndex', function () {
 Route::get('/AccountManagement', function () {
     return view('Organizer/AccountManagement');
 });
+
+Route::post('/EditOrganizerProfile', [UserController::class, 'editOrganizerProfile']);
 
 Route::get('/EventManagement', function () {
     return EventController::org_index();
@@ -41,15 +44,17 @@ Route::get('/FloorPlan', function () {
     return view('Organizer/FloorPlan');
 });
 
-Route::get('/Login', function () {
-    return file_get_contents(base_path('resources/views/Organizer/pages/Login.html'));
+Route::get('/OrganizerLogin', function () {
+    return view('Organizer/OrganizerLogin');
 });
 
-Route::get('/Register', function () {
-    return file_get_contents(base_path('resources/views/Organizer/pages/Register.html'));
+Route::post('/OrganizerLogin', [UserController::class, 'organizerLogin']);
+
+Route::get('/OrganizerRegister', function () {
+    return view('Organizer/OrganizerRegister');
 });
 
-// Route::post('/OrganizerIndex', 'UserController@organizerRegister')->name('organizer.register');
+Route::post('/OrganizerRegister', [UserController::class, 'organizerRegister']);
 
 // ------------------------------- Dealer Routes -------------------------------
 
