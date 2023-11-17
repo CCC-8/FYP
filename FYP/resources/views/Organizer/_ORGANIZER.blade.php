@@ -86,6 +86,7 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.9/index.global.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
 
     <!-- Template Main JS File -->
     <script src="/OrganizerAssets/js/main.js"></script>
@@ -112,8 +113,6 @@
             });
         });
     </script>
-
-    
 
 </body>
 

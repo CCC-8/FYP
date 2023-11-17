@@ -37,6 +37,10 @@ Route::get('/CrewManagement', function () {
 
 Route::get('/Calendar', [EventController::class, 'calendar_events']);
 
+Route::get('/FloorPlan', function () {
+    return view('Organizer/FloorPlan');
+});
+
 Route::get('/Login', function () {
     return file_get_contents(base_path('resources/views/Organizer/pages/Login.html'));
 });
