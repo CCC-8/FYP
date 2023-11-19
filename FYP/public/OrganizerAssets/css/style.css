@@ -1208,6 +1208,26 @@ section {
   font-size: 13px;
 }
 
+.venue-selection img {
+  width: 350px;
+  height: 230px;
+  border: 3px black solid;
+  object-fit: cover;
+  transform: translate3d(0, 0, 1px);
+}
+
+.hover-image {
+  display: none;
+  position: absolute;
+  top: 750px;
+  left: 28%;
+  z-index: 9999;
+}
+
+.checkbox-label:hover .hover-image {
+  display: block;
+}
+
 /* ORGANIZER REGISTRATION & LOGIN FORM */
 .rlForm {
   display: flex;

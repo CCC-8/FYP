@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label for="venue">Venue:</label>
-                <input type="text" name="venue" class="form-control" value="{{ $event->venue }}" required>
+                <input type="text" name="venue" class="form-control" value="{{ $event->venue }}" disabled>
             </div>
             <div class="form-group">
                 <label for="type">Event Type:</label>

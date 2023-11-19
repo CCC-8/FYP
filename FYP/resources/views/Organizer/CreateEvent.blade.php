@@ -35,7 +35,28 @@
             </div>
             <div class="form-group">
                 <label for="venue">Venue:</label>
-                <input type="text" name="venue" class="form-control" required>
+                <div class="venue-selection">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="venue[]" value="South Paddock">&nbsp;&nbsp;South Paddock
+                        <img src="OrganizerAssets/img/venues/south-paddock.jpg" alt="South Paddock" class="hover-image">
+                    </label><br>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="venue[]" value="Paddock Chalet">&nbsp;&nbsp;Paddock Chalet
+                        <img src="OrganizerAssets/img/venues/paddock-chalet.jpg" alt="Paddock Chalet" class="hover-image">
+                    </label><br>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="venue[]" value="North Paddock">&nbsp;&nbsp;North Paddock
+                        <img src="OrganizerAssets/img/venues/north-paddock.jpg" alt="North Paddock" class="hover-image">
+                    </label><br>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="venue[]" value="Paddock Club">&nbsp;&nbsp;Paddock Club
+                        <img src="OrganizerAssets/img/venues/paddock-club.jpeg" alt="Paddock Club" class="hover-image">
+                    </label><br>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="venue[]" value="Perdana Suite">&nbsp;&nbsp;Perdana Suite
+                        <img src="OrganizerAssets/img/venues/perdana-suite.jpeg" alt="Perdana Suite" class="hover-image">
+                    </label>
+                </div>
             </div>
             <div class="form-group">
                 <label for="type">Event Type:</label>

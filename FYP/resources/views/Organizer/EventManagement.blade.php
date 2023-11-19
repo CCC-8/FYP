@@ -33,8 +33,15 @@
                         <td>{{ $event->type }}</td>
                         <td class="text-center">
                             <a href="/EditEventDetails/{{ $event->id }}">
-                                <button type="submit" class="btn btn-warning"><img width="25" height="25"
+                                <button type="submit" class="btn btn-warning">
+                                    <img width="25" height="25"
                                         src="https://img.icons8.com/windows/32/create-new.png" alt="create-new" />
+                                </button>
+                            </a>
+                            <a href="/FloorPlan">
+                                <button type="submit" class="btn btn-info">
+                                    <img width="25" height="25"
+                                        src="https://img.icons8.com/material-outlined/24/floor-plan.png" alt="create-new" />
                                 </button>
                             </a>
                         </td>

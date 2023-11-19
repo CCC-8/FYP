@@ -25,7 +25,8 @@ class EventController extends Controller
             'endDate' => 'required|date',
             'endTime' => 'required|string',
             'status' => 'required|string',
-            'venue' => 'required|string',
+            'venue' => 'required|array',
+            'venue.*' => 'in:South Paddock,Paddock Chalet,North Paddock,Paddock Club,Perdana Suite',
             'type' => 'required|in:Public,Private',
         ]);
 
@@ -37,7 +38,7 @@ class EventController extends Controller
             'endDate' => $request->input('endDate'),
             'endTime' => $request->input('endTime'),
             'status' => $request->input('status'),
-            'venue' => $request->input('venue'),
+            'venue' => implode(',', $request->input('venue')),
             'type' => $request->input('type'),
         ]);
 
@@ -52,7 +53,7 @@ class EventController extends Controller
 
         return view('Organizer/EditEventDetails', ['eventId' => $eventId, 'event' => $event]);
     }
-    
+
     public function updateEventDetails(Request $request, $eventId)
     {
         $event = Event::find($eventId);
@@ -69,7 +70,6 @@ class EventController extends Controller
             'endDate' => 'required|date',
             'endTime' => 'required|string',
             'status' => 'required|string',
-            'venue' => 'required|string',
             'type' => 'required|string|in:Public,Private',
         ]);
 
