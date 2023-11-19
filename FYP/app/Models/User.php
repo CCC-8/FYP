@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $fillable = ['name', 'email', 'contactNo', 'password', 'user_type']; 
+    protected $fillable = ['name', 'email', 'contactNo', 'password', 'profile_image', 'user_type']; 
     public $timestamps = false;
 
     public function events()

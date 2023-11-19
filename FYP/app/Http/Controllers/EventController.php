@@ -46,6 +46,39 @@ class EventController extends Controller
         return redirect('/EventManagement')->with('success', 'Event created successfully.');
     }
 
+    public function editEventDetails($eventId)
+    {
+        $event = Event::find($eventId);
+
+        return view('Organizer/EditEventDetails', ['eventId' => $eventId, 'event' => $event]);
+    }
+    
+    public function updateEventDetails(Request $request, $eventId)
+    {
+        $event = Event::find($eventId);
+
+        if (!$event) {
+            return redirect('/EventManagement')->with('error', 'Event not found.');
+        }
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'startDate' => 'required|date',
+            'startTime' => 'required|string',
+            'endDate' => 'required|date',
+            'endTime' => 'required|string',
+            'status' => 'required|string',
+            'venue' => 'required|string',
+            'type' => 'required|string|in:Public,Private',
+        ]);
+
+        $event->update($validatedData);
+
+        return redirect('/EventManagement')->with('success', 'Event details updated successfully.');
+    }
+
+
     public static function calendar_events()
     {
         $events = Event::all();

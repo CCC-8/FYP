@@ -17,7 +17,7 @@
                 events: @json($formattedEvents),
                 displayEventTime: false,
                 eventClick: function(info) {
-                    window.location.href = '/EventDetails/' + info.event.id;
+                    window.location.href = '/EditEventDetails/' + info.event.id;
                 },
                 // events: [{
                 //         title: 'All Day Event',

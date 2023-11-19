@@ -26,6 +26,10 @@ Route::get('/CreateEvent', function () {
 
 Route::post('/CreateNewEvent', [EventController::class, 'store']);
 
+Route::get('/EditEventDetails/{eventId}', [EventController::class, 'editEventDetails']);
+
+Route::post('/EditEventDetails/{eventId}', [EventController::class, 'updateEventDetails']);
+
 Route::get('/DealershipManagement', function () {
     return view('Organizer/DealershipManagement');
 });

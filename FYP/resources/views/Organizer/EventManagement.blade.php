@@ -13,26 +13,32 @@
         <table id="dataTable" class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Event</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Venue</th>
-                    <th>Type</th>
-                    <th>Action</th>
+                    <th class="text-center">Event</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Venue</th>
+                    <th class="text-center">Type</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($events as $event)
-                <tr>
-                    <td>{{ $event->name }}</td>
-                    <td>{{ $event->description }}</td>
-                    <td>{{ $event->startDate }} - {{ $event->endDate }}</td>
-                    <td>{{ $event->status }}</td>
-                    <td>{{ $event->venue }}</td>
-                    <td>{{ $event->type }}</td>
-                    <td></td>
-                </tr>
+                @foreach ($events as $event)
+                    <tr>
+                        <td>{{ $event->name }}</td>
+                        <td>{{ $event->description }}</td>
+                        <td>{{ $event->startDate }} - {{ $event->endDate }}</td>
+                        <td>{{ $event->status }}</td>
+                        <td>{{ $event->venue }}</td>
+                        <td>{{ $event->type }}</td>
+                        <td class="text-center">
+                            <a href="/EditEventDetails/{{ $event->id }}">
+                                <button type="submit" class="btn btn-warning"><img width="25" height="25"
+                                        src="https://img.icons8.com/windows/32/create-new.png" alt="create-new" />
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

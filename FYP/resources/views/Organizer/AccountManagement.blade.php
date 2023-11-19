@@ -10,11 +10,12 @@
                 <!-- left column -->
                 <div class="col-md-4">
                     <div class="text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                        <img id="previewImage"
+                            src="{{ isset($loggedInUser->profile_image) ? asset('images/' . $loggedInUser->profile_image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
                             class="avatar img-circle img-thumbnail" alt="avatar"
-                            style="object-fit: cover; width: 270px; height: 270px">
+                            style="object-fit: cover; width: 270px; height: 270px; transform: translate3d(0, 0, 1px);">
                         <h6 class="pt-3">Upload a different photo...</h6>
-                        <input type="file" name="profile_image" class="form-control">
+                        <input type="file" id="profileImageInput" name="profile_image" class="form-control">
                     </div>
                 </div>
 
@@ -35,7 +36,8 @@
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Contact Number:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" name="contactNo" type="text" value="{{ $loggedInUser->contactNo }}">
+                            <input class="form-control" name="contactNo" type="text"
+                                value="{{ $loggedInUser->contactNo }}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,4 +55,19 @@
         </form>
     </div>
     <hr>
+
+    <script>
+        document.getElementById('profileImageInput').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                document.getElementById('previewImage').src = e.target.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 @endsection
