@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Venue;
+use App\Models\EventVenue;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -44,14 +46,28 @@ class EventController extends Controller
 
         $event->save();
 
+        $selectedVenues = $request->input('venue');
+        foreach ($selectedVenues as $venueName) {
+            $venue = Venue::where('name', $venueName)->first();
+            if ($venue) {
+                $eventVenue = new EventVenue([
+                    'event_id' => $event->id,
+                    'venue_id' => $venue->id,
+                    'floor_plan' => $venue->default_floor_plan,
+                ]);
+                $eventVenue->save();
+            }
+        }
+
         return redirect('/EventManagement')->with('success', 'Event created successfully.');
     }
 
     public function editEventDetails($eventId)
     {
         $event = Event::find($eventId);
+        $selectedVenues = explode(',', $event->venue);
 
-        return view('Organizer/EditEventDetails', ['eventId' => $eventId, 'event' => $event]);
+        return view('Organizer/EditEventDetails', compact('eventId', 'event', 'selectedVenues'));
     }
 
     public function updateEventDetails(Request $request, $eventId)
@@ -72,6 +88,11 @@ class EventController extends Controller
             'status' => 'required|string',
             'type' => 'required|string|in:Public,Private',
         ]);
+
+        if ($request->has('venue')) {
+            $selectedVenues = $request->input('venue');
+            $event->venue = implode(',', $selectedVenues);
+        }
 
         $event->update($validatedData);
 

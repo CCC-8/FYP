@@ -1,16 +1,25 @@
 @extends('Organizer/_ORGANIZER')
 @section('body')
-    <div class="container" style="width: 95%; padding: 3% 0 0 10%;">
-        <canvas id="fabricCanvas" width="800" height="450" style="border: black 1px solid"></canvas>
+    @php
+        $floorPlanData = json_decode($eventVenue->floor_plan, true);
+        $canvasModifications = $floorPlanData['canvas_modifications'] ?? null;
+        $floorPlanImagePath = $floorPlanData['floor_plan_image'] ?? null;
+    @endphp
+    <div class="container" style="width: 95%; padding: 3% 0 0 3%;">
+        <form action="FloorPlan/{{ $eventVenue->event_id }}/{{ $eventVenue->venue_id }}" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            <canvas id="fabricCanvas" width="1000" height="550" style="border: black 2px solid"></canvas>
 
-        <!-- Buttons to trigger actions -->
-        <button id="drawRectangle">Rectangle</button>
-        <button id="drawCircle">Circle</button>
-        <button id="drawFreehand">Pencil</button>
-        <button id="addText">Text</button>
-        <button id="eraser">Eraser</button>
-        <button id="undo">Undo</button>
-        <button id="saveToDB">Save</button>
+            <input type="hidden" id="canvasModifications" name="canvasModifications">
+            <button id="drawRectangle">Rectangle</button>
+            <button id="drawCircle">Circle</button>
+            <button id="drawFreehand">Pencil</button>
+            <button id="addText">Text</button>
+            <button id="eraser">Eraser</button>
+            <button id="undo">Undo</button>
+            <button type="submit" id="saveToDB">Save</button>
+        </form>
     </div>
 
     <script>
@@ -31,6 +40,23 @@
                 canvas.freeDrawingBrush.color = eraseMode ? 'rgba(0,0,0,0)' : 'black';
                 canvas.freeDrawingBrush.width = 3;
             }
+
+            var img = new Image();
+            img.onload = function() {
+                var floorPlan = new fabric.Image(img, {
+                    left: 0,
+                    top: 0,
+                });
+                canvas.add(floorPlan);
+            };
+            if ($floorPlanImagePath) {
+                img.src = '{{ asset('storage/' . $floorPlanImagePath) }}';
+            }
+
+            var canvasModifications = @json($canvasModifications);
+            canvas.loadFromJSON(canvasModifications, function() {
+                canvas.renderAll();
+            });
 
             document.getElementById('addText').addEventListener('click', function() {
                 var text = new fabric.Textbox('Your Text', {
@@ -84,8 +110,8 @@
 
             document.getElementById('undo').addEventListener('click', function() {
                 if (undoHistory.length > 1) {
-                    undoHistory.pop(); // Remove the current canvas state
-                    var lastAction = undoHistory[undoHistory.length - 1]; // Retrieve the last state
+                    undoHistory.pop();
+                    var lastAction = undoHistory[undoHistory.length - 1];
                     canvas.loadFromJSON(lastAction, function() {
                         canvas.renderAll();
                     });
@@ -103,7 +129,6 @@
                 }
             });
 
-            // Save canvas state function
             function saveCanvasState() {
                 undoHistory.push(JSON.stringify(canvas));
             }

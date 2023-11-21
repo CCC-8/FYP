@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Venue;
 use Illuminate\Http\Request;
-use App\Venue;
 
 class VenueController extends Controller
 {
-    public function suggestVenue(Request $request)
-    {
-        // Handle venue suggestion logic
-    }
-
     public function manageFloorPlan(Request $request)
     {
         // Handle floor plan management logic
+    }
+
+    public function showFloorPlan($venueId)
+    {
+        $venue = Venue::findOrFail($venueId);
+        return view('Organizer/FloorPlan', compact('venue'));
     }
 }
