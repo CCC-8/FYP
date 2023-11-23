@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventVenueController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VenueController;
 use Illuminate\Support\Facades\Route;
 
 // ------------------------------- Organizer Routes -------------------------------
@@ -38,15 +40,21 @@ Route::get('/VenueManagement', function () {
     return view('Organizer/VenueManagement');
 });
 
+Route::post('/CreateNewVenue', [VenueController::class, 'store']);
+
 Route::get('/CrewManagement', function () {
     return view('Organizer/CrewManagement');
 });
 
 Route::get('/Calendar', [EventController::class, 'calendar_events']);
 
-Route::get('/FloorPlan', function () {
-    return view('Organizer/FloorPlan');
-});
+// Route::get('/FloorPlan', function () {
+//     return view('Organizer/FloorPlan');
+// });
+
+Route::get('/FloorPlan/{eventId}/edit', [EventVenueController::class, 'editFloorPlan']);
+
+Route::post('/UpdateFloorPlan/{eventId}/{venueId}', [EventVenueController::class, 'updateFloorPlan']);
 
 Route::get('/OrganizerLogin', function () {
     return view('Organizer/OrganizerLogin');

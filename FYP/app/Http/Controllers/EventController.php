@@ -53,7 +53,10 @@ class EventController extends Controller
                 $eventVenue = new EventVenue([
                     'event_id' => $event->id,
                     'venue_id' => $venue->id,
-                    'floor_plan' => $venue->default_floor_plan,
+                    'floor_plan' => json_encode([
+                        'floor_plan_image' => $venue->default_floor_plan,
+                        'canvas_modifications' => null
+                    ]),
                 ]);
                 $eventVenue->save();
             }
@@ -87,18 +90,31 @@ class EventController extends Controller
             'endTime' => 'required|string',
             'status' => 'required|string',
             'type' => 'required|string|in:Public,Private',
+            'venue' => 'nullable|array'
         ]);
+
+        $event->update($validatedData);
 
         if ($request->has('venue')) {
             $selectedVenues = $request->input('venue');
             $event->venue = implode(',', $selectedVenues);
+            $event->save();
+            $eventVenues = EventVenue::where('event_id', $eventId)->get();
+    
+            foreach ($eventVenues as $eventVenue) {
+                $venue = Venue::find($eventVenue->venue_id);
+                if ($venue && in_array($venue->name, $selectedVenues)) {
+                    $eventVenue->floor_plan = json_encode([
+                        'floor_plan_image' => $venue->default_floor_plan,
+                        'canvas_modifications' => null
+                    ]);
+                    $eventVenue->update($eventVenue->floor_plan);
+                }
+            }
         }
-
-        $event->update($validatedData);
 
         return redirect('/EventManagement')->with('success', 'Event details updated successfully.');
     }
-
 
     public static function calendar_events()
     {

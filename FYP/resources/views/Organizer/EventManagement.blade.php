@@ -35,13 +35,13 @@
                             <a href="/EditEventDetails/{{ $event->id }}">
                                 <button type="submit" class="btn btn-warning">
                                     <img width="25" height="25"
-                                        src="https://img.icons8.com/windows/32/create-new.png" alt="create-new" />
+                                        src="https://img.icons8.com/windows/32/create-new.png" />
                                 </button>
                             </a>
-                            <a href="/FloorPlan">
+                            <a href="/FloorPlan/{{ $event->id }}/edit">
                                 <button type="submit" class="btn btn-info">
                                     <img width="25" height="25"
-                                        src="https://img.icons8.com/material-outlined/24/floor-plan.png" alt="create-new" />
+                                        src="https://img.icons8.com/material-outlined/24/floor-plan.png" />
                                 </button>
                             </a>
                         </td>

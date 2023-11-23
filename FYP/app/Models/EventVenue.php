@@ -8,6 +8,8 @@ class EventVenue extends Model
 {
     protected $fillable = ['event_id', 'venue_id', 'floor_plan'];
 
+    public $timestamps = false;
+
     public function event()
     {
         return $this->belongsTo(Event::class);

@@ -8,6 +8,8 @@ class Venue extends Model
 {
     protected $fillable = ['name', 'capacity', 'default_floor_plan'];
 
+    public $timestamps = false;
+
     public function events()
     {
         return $this->hasMany(Event::class);

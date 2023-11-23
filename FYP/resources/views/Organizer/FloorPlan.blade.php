@@ -6,7 +6,7 @@
         $floorPlanImagePath = $floorPlanData['floor_plan_image'] ?? null;
     @endphp
     <div class="container" style="width: 95%; padding: 3% 0 0 3%;">
-        <form action="FloorPlan/{{ $eventVenue->event_id }}/{{ $eventVenue->venue_id }}" method="POST"
+        <form action="UpdateFloorPlan/{{ $eventVenue->event_id }}/{{ $eventVenue->venue_id }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             <canvas id="fabricCanvas" width="1000" height="550" style="border: black 2px solid"></canvas>
@@ -30,7 +30,6 @@
             var eraseMode = false;
             var undoHistory = [];
 
-            // Toggle drawing modes
             function toggleMode(mode) {
                 drawingMode = mode === 'draw';
                 eraseMode = mode === 'erase';

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\EventVenue;
 use Illuminate\Http\Request;
 
 class EventVenueController extends Controller
 {
-    public function editFloorPlan($eventId, $venueId)
+    public function editFloorPlan($eventId)
     {
-        $eventVenue = EventVenue::where('event_id', $eventId)
-            ->where('venue_id', $venueId)
-            ->firstOrFail();
+        $event = Event::find($eventId);
+        $eventVenue = EventVenue::where('event_id', $eventId)->first();
 
-        return view('Organizer/FloorPlan', compact('eventVenue'));
+        return view('Organizer/FloorPlan', compact('event', 'eventVenue'));
     }
 
     public function updateFloorPlan(Request $request, $eventId, $venueId)

@@ -114,7 +114,6 @@ class UserController extends Controller
         $organizer->save();
 
         return redirect('/OrganizerIndex')->with('info', 'User registered successfully');
-        dd($organizer);
     }
 
     public function resetPassword(Request $request)
