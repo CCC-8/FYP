@@ -7,12 +7,12 @@
                 @csrf
                 <h2>Sign In</h2>
                 <div class="inputBox">
-                    <input type="text" name="name" required="required">
+                    <input type="text" name="name" required>
                     <span>Organization Name</span>
                     <i></i>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="password" required="required">
+                    <input type="password" name="password" required>
                     <span>Password</span>
                     <i></i>
                 </div>

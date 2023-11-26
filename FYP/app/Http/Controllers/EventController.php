@@ -143,6 +143,12 @@ class EventController extends Controller
         return view('User/Events', compact('events'));
     }
 
+    public static function show_events()
+    {
+        $events = Event::all();
+        return view('User/UserIndex', compact('events'));
+    }
+
     public function event_details(Request $request, $id)
     {
         $event = Event::find($id);

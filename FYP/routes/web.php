@@ -48,10 +48,6 @@ Route::get('/CrewManagement', function () {
 
 Route::get('/Calendar', [EventController::class, 'calendar_events']);
 
-// Route::get('/FloorPlan', function () {
-//     return view('Organizer/FloorPlan');
-// });
-
 Route::get('/FloorPlan/{eventId}/edit', [EventVenueController::class, 'editFloorPlan']);
 
 Route::post('/UpdateFloorPlan/{eventId}/{venueId}', [EventVenueController::class, 'updateFloorPlan']);
@@ -80,8 +76,30 @@ Route::get('/UserIndex', function () {
     return view('User/UserIndex');
 });
 
+Route::get('/UserIndex', [EventController::class, 'show_events']);
+
+Route::get('/UserProfile', function () {
+    return view('User/UserProfile');
+});
+
+Route::post('/EditUserProfile', [UserController::class, 'editUserProfile']);
+
 Route::get('/Events', function () {
     return EventController::user_index();
 });
 
 Route::get('/EventDetails/{id}', [EventController::class, 'event_details']);
+
+Route::get('/UserLogin', function () {
+    return view('User/UserLogin');
+});
+
+Route::post('/UserLogin', [UserController::class, 'userLogin']);
+
+Route::get('/UserLogout', [UserController::class, 'userLogout']);
+
+Route::get('/UserRegister', function () {
+    return view('User/UserRegister');
+});
+
+Route::post('/UserRegister', [UserController::class, 'userRegister']);

@@ -2,9 +2,9 @@
 @section('body')
     @php $loggedInUser = session('loggedInUser'); @endphp
     <div class="container bootstrap snippets bootdey pt-5 pl-4">
-        <h1 class="text-primary">Organizer Profile</h1>
+        <h1 class="text-primary">User Profile</h1>
         <hr>
-        <form class="form-horizontal" role="form" method="POST" action="/EditOrganizerProfile" enctype="multipart/form-data">
+        <form class="form-horizontal" role="form" method="POST" action="/EditUserProfile" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <!-- left column -->
@@ -22,7 +22,7 @@
                 <!-- edit form column -->
                 <div class="col-md-8 personal-info">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Full Name:</label>
+                        <label class="col-lg-3 control-label">Company:</label>
                         <div class="col-lg-8">
                             <input class="form-control" name="name" type="text" value="{{ $loggedInUser->name }}">
                         </div>
@@ -42,7 +42,7 @@
                     </div><br>
                     <div style="float: left;">
                         <button type="submit" class="btn btn-success">Update</button>
-                        <button type="cancel" class="btn btn-danger">Discard</button>
+                        <button type="cancel" class="btn btn-danger">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -64,4 +64,5 @@
             }
         });
     </script>
+
 @endsection

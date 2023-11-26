@@ -1,5 +1,6 @@
 @extends('User/_USER')
 @section('body')
+    @php $loggedInUser = session('loggedInUser'); @endphp
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
@@ -30,20 +31,20 @@
                 </div>
 
                 <div class="row">
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="assets/img/hero-bg.jpg" class="img-fluid" alt=""
-                                style="height: 300px; object-fit: cover;">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Event Name Here</h4>
-                                    <span>Date Here</span>
+                    @foreach ($events as $event)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                                <img src="assets/img/hero-bg.jpg" class="img-fluid" alt=""
+                                    style="height: 300px; object-fit: cover;">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h3>{{ $event->name }}</h3>
+                                        <span>{{ $event->date }} @ {{ $event->venue }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                    @endforeach
                     <div class="col-lg-4 col-md-6">
                         <div class="member" data-aos="zoom-in" data-aos-delay="100">
                             <img src="assets/img/testimg1.jpg" class="img-fluid" alt=""
@@ -57,39 +58,16 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="assets/img/testimg2.jpg" class="img-fluid" alt=""
-                                style="height: 300px; object-fit: cover;">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Event Name Here</h4>
-                                    <span>Date Here</span>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-center justify-content-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="text-center">
+                                    <a href="/Events"><button class="btn">View All Events</button></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <img src="assets/img/testimg3.jpg" class="img-fluid" alt=""
-                                style="height: 300px; object-fit: cover;">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Event Name Here</h4>
-                                    <span>Date Here</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-                <div class="container">
-                    <div class="row pt-4" style="float: right">
-                        <a href="/Events"><button class="btn">View All Events</button></a>
-                    </div>
-                </div>
-
             </div>
         </section><!-- End Chefs Section -->
 

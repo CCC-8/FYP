@@ -4,7 +4,7 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-center">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
-            <h1>Driven Communications</h1>
+            <h1>{{ $loggedInUser->name }}</h1>
             <p>We're <span class="typed"
                     data-typed-items="Automotive Event Organizer, Marketing Agency, Digital Content Creator"></span></p>
             <div class="social-links">
