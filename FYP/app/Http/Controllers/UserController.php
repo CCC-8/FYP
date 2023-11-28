@@ -40,11 +40,28 @@ class UserController extends Controller
 
     public function dealerLogin(Request $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => 'dealer'])) {
-            return redirect()->route('/DealerIndex');
+        $name = $request->input('name');
+        $password = $request->input('password');
+
+        $user = DB::table('users')
+            ->where('name', $name)
+            ->where('user_type', 'dealer')
+            ->first();
+
+        if ($user && password_verify($password, $user->password)) {
+            session(['loggedIn' => true]);
+            session(['loggedInUser' => $user]);
+            return redirect('/DealerIndex')->with('info', 'Login successful');
         } else {
-            return back()->with('error', 'Invalid login credentials');
+            return redirect()->back()->with('error', 'Invalid credentials');
         }
+    }
+
+    public function dealerLogout()
+    {
+        session(['loggedIn' => false]);
+
+        return redirect('/DealerLogin')->with('info', 'Logged out successfully');
     }
 
     public function organizerLogin(Request $request)
@@ -83,6 +100,8 @@ class UserController extends Controller
         ]);
 
         $user->save();
+        session(['loggedIn' => true]);
+        session(['loggedInUser' => $user]);
 
         return redirect('/UserIndex')->with('info', 'User registered successfully');
     }
@@ -106,6 +125,8 @@ class UserController extends Controller
 
         $dealer->save();
 
+        session(['loggedIn' => true]);
+        session(['loggedInUser' => $dealer]);
         return redirect('/DealerIndex')->with('info', 'User registered successfully');
     }
 
@@ -127,6 +148,8 @@ class UserController extends Controller
         ]);
 
         $organizer->save();
+        session(['loggedIn' => true]);
+        session(['loggedInUser' => $organizer]);
 
         return redirect('/OrganizerIndex')->with('info', 'User registered successfully');
     }
@@ -165,28 +188,34 @@ class UserController extends Controller
 
     public function editDealerProfile(Request $request)
     {
+        $loggedInUser = session('loggedInUser');
+
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . auth()->user()->dealer->id,
+            'email' => 'required|email|unique:users,email,' . $loggedInUser->id,
             'contactNo' => 'required|string|max:15',
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $dealer = auth()->user()->dealer;
-        $dealer->name = $request->input('name');
-        $dealer->email = $request->input('email');
-        $dealer->contactNo = $request->input('contactNo');
+        $user = User::find($loggedInUser->id);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->contactNo = $request->input('contactNo');
 
         if ($request->hasFile('profile_image')) {
             $image = $request->file('profile_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images'), $imageName);
-            $dealer->profile_image = $imageName;
+            $user->profile_image = $imageName;
         }
 
-        $dealer->save();
+        $user->save();
 
-        return redirect()->back()->with('success', 'Profile updated successfully.');
+        $updatedUser = User::find($loggedInUser->id);
+        session(['loggedInUser' => $updatedUser]);
+
+        return redirect('/DealerIndex')->with('success', 'Profile updated successfully.');
     }
 
     public function editOrganizerProfile(Request $request)

@@ -70,6 +70,20 @@ Route::get('/DealerIndex', function () {
     return view('Dealer/DealerIndex');
 });
 
+Route::get('/DealerLogin', function () {
+    return view('Dealer/DealerLogin');
+});
+
+Route::post('/DealerLogin', [UserController::class, 'dealerLogin']);
+
+Route::get('/DealerLogout', [UserController::class, 'dealerLogout']);
+
+Route::get('/DealerRegister', function () {
+    return view('Dealer/DealerRegister');
+});
+
+Route::post('/DealerRegister', [UserController::class, 'dealerRegister']);
+
 // ------------------------------- User Routes -------------------------------
 
 Route::get('/UserIndex', function () {

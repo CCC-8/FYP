@@ -1,5 +1,6 @@
 @extends('Dealer/_DEALER')
 @section('body')
+    @php $loggedInUser = session('loggedInUser'); @endphp
     <!-- ======= Profile Section ======= -->
     <section id="profile" class="profile">
 
@@ -15,7 +16,7 @@
                     <img src="/DealerAssets/img/me.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                    <h3>(Dealer Name Here)</h3>
+                    <h3>{{ $loggedInUser->name }}</h3>
                     <br>
                     <div class="row">
                         <div class="col-lg-6">
