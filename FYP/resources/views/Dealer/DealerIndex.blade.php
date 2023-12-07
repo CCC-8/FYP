@@ -11,76 +11,54 @@
                 <p>Manage Dealer Profile</p>
             </div>
 
-            <div class="row">
-                <div class="col-lg-4" data-aos="fade-right">
-                    <img src="/DealerAssets/img/me.jpg" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                    <h3>{{ $loggedInUser->name }}</h3>
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May 1995</span>
-                                </li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-                                    <span>www.example.com</span>
-                                </li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456 7890</span>
-                                </li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York, USA</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
-                                    <span>email@example.com</span>
-                                </li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span>
-                                </li>
-                            </ul>
-                        </div>
+            <form action="/EditDealerProfile" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-4" data-aos="fade-right">
+                        <img src="{{ isset($loggedInUser->profile_image) ? asset('images/' . $loggedInUser->profile_image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}"
+                            class="img-fluid" id="previewImage" alt=""
+                            style="object-fit: contain; width: 270px; height: 270px; transform: translate3d(0, 0, 1px);">
+                        <h6 class="pt-3">Upload a different photo...</h6>
+                        <input type="file" id="profileImageInput" name="profile_image" class="form-control">
                     </div>
-                    <button type="button" class="btn btn-primary mt-5" data-bs-toggle="modal"
-                        data-bs-target="#editProfileModal"
-                        style="position: absolute; left: 50%; background: #18d26e; border: 0; padding: 10px 30px;
-                        color: #fff; transition: 0.4s; border-radius: 4px;">Edit
-                        Profile</button>
-
-                    {{-- <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="background: grey">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <!-- Your form goes here -->
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save Changes</button>
-                                </div>
+                    <div class="col-lg-8 pt-5 content" data-aos="fade-left">
+                        {{-- <h3>{{ $loggedInUser->name }}</h3> --}}
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <ul>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Dealer Name:</strong>
+                                    </li><br>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                                    </li><br>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Contact Number:</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul>
+                                    <li><input class="" name="name" type="text"
+                                            style="background: transparent; border: 0; color: white; padding: 0"
+                                            value="{{ $loggedInUser->name }}"></li><br>
+                                    <li><input class="" name="email" type="email"
+                                            style="background: transparent; border: 0; color: white; padding: 0"
+                                            value="{{ $loggedInUser->email }}"></li><br>
+                                    <li><input class="" name="contactNo" type="text"
+                                            style="background: transparent; border: 0; color: white; padding: 0"
+                                            value="{{ $loggedInUser->contactNo }}"></li>
+                                </ul>
                             </div>
                         </div>
-                    </div> --}}
+                        <button type="submit" class="btn btn-primary mt-5"
+                            style="position: absolute; left: 45%; background: #18d26e; border: 0; padding: 10px 30px;
+                        color: #fff; transition: 0.4s; border-radius: 4px;">Save
+                            Profile
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
+        </div>
+
         </div>
     </section><!-- End Profile Section -->
 
@@ -583,4 +561,19 @@
 
         </div>
     </section><!-- End Contact Section -->
+
+    <script>
+        document.getElementById('profileImageInput').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                document.getElementById('previewImage').src = e.target.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 @endsection

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venue extends Model
 {
-    protected $fillable = ['name', 'capacity', 'default_floor_plan'];
+    protected $fillable = ['name', 'capacity', 'default_floor_plan', 'canvas_modifications'];
 
     public $timestamps = false;
 

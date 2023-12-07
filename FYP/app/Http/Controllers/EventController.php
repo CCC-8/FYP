@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crew;
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Venue;
 use App\Models\EventVenue;
@@ -100,7 +102,7 @@ class EventController extends Controller
             $event->venue = implode(',', $selectedVenues);
             $event->save();
             $eventVenues = EventVenue::where('event_id', $eventId)->get();
-    
+
             foreach ($eventVenues as $eventVenue) {
                 $venue = Venue::find($eventVenue->venue_id);
                 if ($venue && in_array($venue->name, $selectedVenues)) {
@@ -135,6 +137,11 @@ class EventController extends Controller
         return view('Organizer/Calendar', compact('formattedEvents'));
     }
 
+    public function deleteEvent($eventId)
+    {
+        // Handle event deletion logic
+    }
+
     // ---------------------------- User ---------------------------- 
 
     public static function user_index()
@@ -155,20 +162,25 @@ class EventController extends Controller
         return view('User/EventDetails', compact('id', 'event'));
     }
 
-
-
-    public function searchEvent(Request $request)
+    public function crewApplication($userId, $eventId)
     {
-        // Handle event search logic
-    }
+        $user = User::find($userId);
+        $event = Event::find($eventId);
 
-    public function updateEvent(Request $request, $eventId)
-    {
-        // Handle event update logic
-    }
+        $existingApplication = Crew::where('user_id', $userId)->where('event_id', $eventId)->first();
 
-    public function deleteEvent($eventId)
-    {
-        // Handle event deletion logic
+        if ($existingApplication) {
+            return redirect()->back()->with('error', 'You have already applied as crew for this event.');
+        }
+
+        $crew = new Crew([
+            'user_id' => $user->id,
+            'event_id' => $event->id,
+            'status' => 'Pending'
+        ]);
+
+        $crew->save();
+
+        return redirect()->back()->with('success', 'Applied as crew successfully.');
     }
 }

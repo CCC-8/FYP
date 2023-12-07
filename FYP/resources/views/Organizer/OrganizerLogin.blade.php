@@ -17,8 +17,8 @@
                     <i></i>
                 </div>
                 <div class="links">
-                    <a href="#">Forgot Password</a>
-                    <a href="/OrganizerRegister">Sign Up</a>
+                    <a href="/ResetPassword">Forgot Password</a>
+                    {{-- <a href="/OrganizerRegister">Sign Up</a> --}}
                 </div>
                 <br>
                 <input type="submit" value="Login">

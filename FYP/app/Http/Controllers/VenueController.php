@@ -18,9 +18,8 @@ class VenueController extends Controller
         $venue = new Venue([
             'name' => $validatedData['name'],
             'capacity' => $validatedData['capacity'],
-            'default_floor_plan' => json_encode([
-                'file_path' => $request->file('default_floor_plan')->store('default_floor_plans')
-            ]),
+            'default_floor_plan' => $request->file('default_floor_plan')->store('default_floor_plans'),
+            'canvas_modifications' => '{}',
         ]);
 
         $venue->save();

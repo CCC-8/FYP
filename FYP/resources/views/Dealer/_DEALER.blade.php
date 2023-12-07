@@ -43,23 +43,16 @@
                 <ul>
                     <li><a class="nav-link active" href="#header">Home</a></li>
                     <li><a class="nav-link" href="#profile">Profile</a></li>
-                    <li><a class="nav-link" href="#about">About</a></li>
-                    <li><a class="nav-link" href="#services">Services</a></li>
-                    <li><a class="nav-link" href="#contact">Contact</a></li>
-                    <li><a class="nav-link" href="#"><button type="button"
+                    <li><a class="nav-link" href="#about">Products</a></li>
+                    {{-- <li><a class="nav-link" href="#services">Services</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li> --}}
+                    <li><a class="nav-link" href="/DealerLogout"><button type="button"
                                 style="background: #18d26e; border: 0; padding: 6px 20px;
-                        color: #fff; border-radius: 4px;">Login</button></a>
+                        color: #fff; border-radius: 4px;">Logout</button></a>
                     </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
-            {{-- 
-            <div class="social-links">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div> --}}
 
         </div>
     </header><!-- End Header -->

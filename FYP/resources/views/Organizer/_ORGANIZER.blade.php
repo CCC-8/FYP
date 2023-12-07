@@ -43,8 +43,8 @@
             <ul>
                 <li><a href="/OrganizerIndex" class="nav-link "><i class="bx bx-home"></i> <span>Home</span></a>
                 </li>
-                <li><a href="/AccountManagement" class="nav-link "><i class="bx bx-user"></i>
-                        <span>Account</span></a></li>
+                <li><a href="/ProfileManagement" class="nav-link "><i class="bx bx-user"></i>
+                        <span>Profile</span></a></li>
                 <li><a href="/EventManagement" class="nav-link "><i class="bx bx-abacus"></i>
                         <span>Event</span></a></li>
                 <li><a href="/DealershipManagement" class="nav-link "><i class="bx bx-network-chart"></i>

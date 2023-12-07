@@ -252,5 +252,26 @@ class UserController extends Controller
 
     public function resetPassword(Request $request)
     {
+        $validatedData = $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|min:8',
+        ]);
+
+        $user = User::where('email', $validatedData['email'])->first();
+
+        if ($user) {
+            $user->password = bcrypt($request->password); 
+            $user->save();
+
+            if ($user->user_type === 'user') {
+                return redirect('/UserLogin')->with('success', 'Password reset successfully. Please log in.');
+            } elseif ($user->user_type === 'dealer') {
+                return redirect('/DealerLogin')->with('success', 'Password reset successfully. Please log in.');
+            } elseif ($user->user_type === 'organizer') {
+                return redirect('/OrganizerLogin')->with('success', 'Password reset successfully. Please log in.');
+            }
+        }
+
+        return redirect()->back()->with('error', 'User not found. Please check your email.');
     }
 }

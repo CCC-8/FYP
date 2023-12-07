@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Crew extends Model
 {
     protected $fillable = ['user_id', 'event_id', 'status'];
+    public $timestamps = false;
 
     public function user()
     {

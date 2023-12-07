@@ -1,30 +1,27 @@
 @extends('Organizer/_ORGANIZER')
 @section('body')
-    @php
-        $floorPlanData = json_decode($eventVenue->floor_plan, true);
-        $canvasModifications = $floorPlanData['canvas_modifications'] ?? null;
-        $floorPlanImagePath = $floorPlanData['floor_plan_image'] ?? null;
-    @endphp
     <div class="container" style="width: 95%; padding: 3% 0 0 3%;">
-        <form action="UpdateFloorPlan/{{ $eventVenue->event_id }}/{{ $eventVenue->venue_id }}" method="POST"
-            enctype="multipart/form-data">
-            @csrf
-            <canvas id="fabricCanvas" width="1000" height="550" style="border: black 2px solid"></canvas>
-
-            <input type="hidden" id="canvasModifications" name="canvasModifications">
-            <button id="drawRectangle">Rectangle</button>
-            <button id="drawCircle">Circle</button>
-            <button id="drawFreehand">Pencil</button>
-            <button id="addText">Text</button>
-            <button id="eraser">Eraser</button>
-            <button id="undo">Undo</button>
-            <button type="submit" id="saveToDB">Save</button>
-        </form>
+        <canvas id="fabricCanvas" width="1000" height="550" style="border: black 2px solid"></canvas>
+        <img id="floorPlanImage" src="{{ asset('storage/' . $defaultFloorPlan) }}" alt="Floor Plan Image">
+        <button id="drawRectangle">Rectangle</button>
+        <button id="drawCircle">Circle</button>
+        <button id="drawFreehand">Pencil</button>
+        <button id="addText">Text</button>
+        <button id="eraser">Eraser</button>
+        <button id="undo">Undo</button>
+        <button type="submit" id="saveCanvas">Save</button>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.6.0/fabric.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var canvas = new fabric.Canvas('fabricCanvas');
+
+            fabric.Image.fromURL(document.getElementById('floorPlanImage').src, function(img) {
+                canvas.setWidth(img.width);
+                canvas.setHeight(img.height);
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+            });
 
             var drawingMode = false;
             var eraseMode = false;
@@ -38,18 +35,6 @@
                     canvas);
                 canvas.freeDrawingBrush.color = eraseMode ? 'rgba(0,0,0,0)' : 'black';
                 canvas.freeDrawingBrush.width = 3;
-            }
-
-            var img = new Image();
-            img.onload = function() {
-                var floorPlan = new fabric.Image(img, {
-                    left: 0,
-                    top: 0,
-                });
-                canvas.add(floorPlan);
-            };
-            if ($floorPlanImagePath) {
-                img.src = '{{ asset('storage/' . $floorPlanImagePath) }}';
             }
 
             var canvasModifications = @json($canvasModifications);
@@ -131,6 +116,36 @@
             function saveCanvasState() {
                 undoHistory.push(JSON.stringify(canvas));
             }
+
+            document.getElementById('saveCanvas').addEventListener('click', function() {
+                const modifiedCanvas = JSON.stringify(canvas.toJSON());
+
+                // Send modified canvas data to the server using fetch or AJAX
+                fetch(`/venues/{{ $venue->id }}/save-canvas`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            modifiedCanvasData: modifiedCanvas
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    })
+                    .then(data => {
+                        console.log(data); // Handle success response
+                        // Optionally, show a success message to the user
+                    })
+                    .catch(error => {
+                        console.error('There was a problem saving the canvas:', error);
+                        // Optionally, show an error message to the user
+                    });
+            });
 
             canvas.on('object:modified', function() {
                 saveCanvasState();

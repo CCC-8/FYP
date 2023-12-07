@@ -6,32 +6,36 @@
         <table id="dataTable" class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Crew Name</th>
-                    <th>Contact Number</th>
-                    <th>Age</th>
-                    <th>Approval</th>
+                    <th class="text-center">Crew Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Contact Number</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Taneesh</td>
-                    <td>013-41241411</td>
-                    <td>21</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>Mirza</td>
-                    <td>013-74548556</td>
-                    <td>22</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr>
-                    <td>Louis</td>
-                    <td>016-52513456</td>
-                    <td>29</td>
-                </tr>
+                @foreach ($crewMembers as $crew)
+                    <tr>
+                        <td>{{ $crew['name'] }}</td>
+                        <td>{{ $crew['email'] }}</td>
+                        <td>{{ $crew['contactNo'] }}</td>
+                        <td>{{ $crew['status'] }}</td>
+                        <td>
+                            @if (strtolower($crew['status']) == 'pending')
+                                <form action="/approveApplication/{{ $crew['user_id'] }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">Approve</button>
+                                </form>
+                                <form action="/rejectApplication/{{ $crew['user_id'] }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                </form>
+                            @else
+                                Status: {{ $crew['status'] }}
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
