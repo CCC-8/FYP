@@ -8,7 +8,7 @@
             <label for="Capacity">Capacity</label>
             <input type="text" name="capacity" id="capacity"><br>
             <label for="Default Floor Plan">Default Floor Plan</label>
-            <input type="file" name="default_floor_plan" id="default_floor_plan"><br>
+            <input type="file" name="floorPlan" id="floorPlan"><br>
             <button type="submit">Save</button>
         </form>
     </div>

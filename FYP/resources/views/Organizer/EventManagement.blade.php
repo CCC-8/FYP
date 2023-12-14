@@ -27,19 +27,23 @@
                     <tr>
                         <td>{{ $event->name }}</td>
                         <td>{{ $event->description }}</td>
-                        <td>{{ $event->startDate }} - {{ $event->endDate }}</td>
+                        <td>
+                            @if ($event->startDate === $event->endDate)
+                                {{ $event->startDate }}
+                            @else
+                                {{ $event->startDate }} - {{ $event->endDate }}
+                            @endif
+                        </td>
                         <td>{{ $event->status }}</td>
                         <td>{{ $event->venue }}</td>
                         <td>{{ $event->type }}</td>
                         <td class="text-center">
                             <a href="/EditEventDetails/{{ $event->id }}">
                                 <button type="submit" class="btn btn-warning">
-                                    <img width="25" height="25"
-                                        src="https://img.icons8.com/windows/32/edit.png" />
+                                    <img width="25" height="25" src="https://img.icons8.com/windows/32/edit.png" />
                                 </button>
                             </a>
-                            {{-- <a href="/FloorPlan2/{{ $event->id }}/edit"> --}}
-                            <a href="/FloorPlan2/{{ $event->id }}">
+                            <a href="/FloorPlan/{{ $event->id }}">
                                 <button type="submit" class="btn btn-info">
                                     <img width="25" height="25"
                                         src="https://img.icons8.com/windows/24/floor-plan.png" />
@@ -47,8 +51,7 @@
                             </a>
                             <a href="/CrewManagement/{{ $event->id }}">
                                 <button type="submit" class="btn btn-danger">
-                                    <img width="25" height="25"
-                                        src="https://img.icons8.com/windows/24/work.png" />
+                                    <img width="25" height="25" src="https://img.icons8.com/windows/24/work.png" />
                                 </button>
                             </a>
                         </td>

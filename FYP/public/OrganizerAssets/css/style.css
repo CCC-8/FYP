@@ -1219,12 +1219,12 @@ section {
 .hover-image {
   display: none;
   position: absolute;
-  top: 750px;
+  top: 1135px;
   left: 28%;
   z-index: 9999;
 }
 
-.checkbox-label:hover .hover-image {
+.radio-label:hover .hover-image {
   display: block;
 }
 

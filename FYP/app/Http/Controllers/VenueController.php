@@ -12,15 +12,20 @@ class VenueController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'capacity' => 'required|integer',
-            'default_floor_plan' => 'required|file|mimes:jpeg,png,pdf',
+            'floorPlan' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $venue = new Venue([
             'name' => $validatedData['name'],
             'capacity' => $validatedData['capacity'],
-            'default_floor_plan' => $request->file('default_floor_plan')->store('default_floor_plans'),
-            'canvas_modifications' => '{}',
         ]);
+
+        if ($request->hasFile('floorPlan')) {
+            $image = $request->file('floorPlan');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $venue->floorPlan = $imageName;
+        }
 
         $venue->save();
 

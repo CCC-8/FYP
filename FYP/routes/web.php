@@ -44,13 +44,11 @@ Route::post('/rejectApplication/{crewId}', [CrewController::class, 'rejectApplic
 
 Route::get('/Calendar', [EventController::class, 'calendar_events']);
 
-// Route::get('/FloorPlan/{venueId}/edit', [EventVenueController::class, 'editFloorPlan']);
-// Route::post('/FloorPlan/{venueId}/save', [EventVenueController::class, 'saveCanvas']);
-Route::get('/FloorPlan2/{eventId}', [EventVenueController::class, 'showFloorPlan']);
-
-Route::get('/FloorPlan2', function () {
-    return view('Organizer/FloorPlan2');
+Route::get('/FloorPlan/{eventId}', [EventVenueController::class, 'showFloorPlan']);
+Route::get('/FloorPlan', function () {
+    return view('Organizer/FloorPlan');
 });
+Route::post('/updateFloorPlan/{eventId}', [EventVenueController::class, 'updateFloorPlan']);
 
 Route::get('/OrganizerLogin', function () {
     return view('Organizer/OrganizerLogin');

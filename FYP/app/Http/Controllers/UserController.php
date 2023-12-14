@@ -85,7 +85,7 @@ class UserController extends Controller
     public function userRegister(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|unique:users',
             'contactNo' => 'required|string|max:12|unique:users',
             'password' => 'required|string|min:8',
@@ -159,7 +159,7 @@ class UserController extends Controller
         $loggedInUser = session('loggedInUser');
 
         $this->validate($request, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|',
             'email' => 'required|email|unique:users,email,' . $loggedInUser->id,
             'contactNo' => 'required|string|max:15',
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',

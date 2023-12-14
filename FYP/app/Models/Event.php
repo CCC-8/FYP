@@ -8,7 +8,7 @@ class Event extends Model
 {
     protected $table = 'events';
 
-    protected $fillable = ['name', 'description', 'startDate', 'startTime', 'endDate', 'endTime','status', 'venue', 'type'];
+    protected $fillable = ['name', 'description', 'startDate', 'startTime', 'endDate', 'endTime','status', 'venue', 'type', 'eventImage', 'floorPlan'];
 
     public $timestamps = false;
 

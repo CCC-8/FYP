@@ -49,10 +49,10 @@
                         <span>Event</span></a></li>
                 <li><a href="/DealershipManagement" class="nav-link "><i class="bx bx-network-chart"></i>
                         <span>Dealership</span></a></li>
-                <li><a href="/VenueManagement" class="nav-link "><i class="bx bx-map-pin"></i>
-                        <span>Venue</span></a></li>
-                <li><a href="/CrewManagement" class="nav-link "><i class="bx bx-face"></i>
-                        <span>Crew</span></a></li>
+                {{-- <li><a href="/VenueManagement" class="nav-link "><i class="bx bx-map-pin"></i>
+                        <span>Venue</span></a></li> --}}
+                {{-- <li><a href="/CrewManagement" class="nav-link "><i class="bx bx-face"></i>
+                        <span>Crew</span></a></li> --}}
                 <li><a href="/Calendar" class="nav-link "><i class="bx bx-calendar"></i>
                         <span>Calendar</span></a></li>
                 <li><a href="/OrganizerLogin" class="nav-link "><i class="bx bx-log-out"></i>
