@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="DealerAssets/img/favicon.png" rel="icon">
-    <link href="DealerAssets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/DealerAssets/img/favicon.png" rel="icon">
+    <link href="/DealerAssets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -37,15 +37,14 @@
     <header id="header">
         <div class="container">
 
-            <h1><a href="index.html">{{ $loggedInUser->name }}</a></h1>
+            <h1><a href="/DealerIndex">{{ $loggedInUser->name }}</a></h1>
 
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link active" href="#header">Home</a></li>
                     <li><a class="nav-link" href="#profile">Profile</a></li>
-                    <li><a class="nav-link" href="#about">Products</a></li>
-                    {{-- <li><a class="nav-link" href="#services">Services</a></li>
-                    <li><a class="nav-link" href="#contact">Contact</a></li> --}}
+                    <li><a class="nav-link" href="#services">Products</a></li>
+                    <li><a class="nav-link" href="#about">Services</a></li>
                     <li><a class="nav-link" href="/DealerLogout"><button type="button"
                                 style="background: #18d26e; border: 0; padding: 6px 20px;
                         color: #fff; border-radius: 4px;">Logout</button></a>

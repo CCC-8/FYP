@@ -18,11 +18,11 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="/DealerAssets/img/dealerlogin.jpg" style="height: 350px; width: 250px; object-fit: cover; transform: translate3d(0, 0, 1px);"></figure>
                         <a href="/DealerRegister" class="signup-image-link">Create an dealer account</a>
                     </div>
 
-                    <div class="signin-form">
+                    <div class="signin-form" style="margin-top: 50px;">
                         <h2 class="form-title">Sign In</h2>
                         <form method="POST" class="register-form" id="login-form">
                             @csrf

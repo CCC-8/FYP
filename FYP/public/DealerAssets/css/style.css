@@ -689,7 +689,7 @@ section .container {
 .services .icon-box {
   text-align: center;
   background: rgba(204, 204, 204, 0.1);
-  padding: 80px 20px;
+  padding: 30px 20px;
   transition: all ease-in-out 0.3s;
 }
 
@@ -758,7 +758,7 @@ section .container {
   background: #35e888;
 }
 
-.services .icon-box:hover h4 a,
+.services .icon-box:hover h3 a,
 .services .icon-box:hover p {
   color: #fff;
 }
@@ -1127,7 +1127,11 @@ section .container {
   padding: 12px 15px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form option {
+  color: #000;
+}
+
+.contact .btn-success {
   background: #18d26e;
   border: 0;
   padding: 10px 30px;
@@ -1148,36 +1152,4 @@ section .container {
   100% {
     transform: rotate(360deg);
   }
-}
-
-/*--------------------------------------------------------------
-# Credits
---------------------------------------------------------------*/
-.credits {
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  padding: 15px;
-  text-align: right;
-  font-size: 13px;
-  color: #fff;
-  z-index: 999999;
-}
-
-@media (max-width: 992px) {
-  .credits {
-    text-align: center;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.8);
-  }
-}
-
-.credits a {
-  color: #18d26e;
-  transition: 0.3s;
-}
-
-.credits a:hover {
-  color: #fff;
 }

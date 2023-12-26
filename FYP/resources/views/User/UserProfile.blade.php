@@ -1,8 +1,8 @@
-@extends('Organizer/_ORGANIZER')
+@extends('User/_USER')
 @section('body')
     @php $loggedInUser = session('loggedInUser'); @endphp
     <div class="container bootstrap snippets bootdey pt-5 pl-4">
-        <h1 class="text-primary">User Profile</h1>
+        <h1 class="text-primary" style="margin-top: 8%; color: #cda45e !important">User Profile</h1>
         <hr>
         <form class="form-horizontal" role="form" method="POST" action="/EditUserProfile" enctype="multipart/form-data">
             @csrf
@@ -22,33 +22,71 @@
                 <!-- edit form column -->
                 <div class="col-md-8 personal-info">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">Company:</label>
+                        <label class="col-lg-3 control-label">Name:</label>
                         <div class="col-lg-8">
                             <input class="form-control" name="name" type="text" value="{{ $loggedInUser->name }}">
-                        </div>
+                        </div><br>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Email:</label>
                         <div class="col-lg-8">
                             <input class="form-control" name="email" type="text" value="{{ $loggedInUser->email }}">
-                        </div>
+                        </div><br>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Contact Number:</label>
                         <div class="col-lg-8">
                             <input class="form-control" name="contactNo" type="text"
                                 value="{{ $loggedInUser->contactNo }}">
-                        </div>
+                        </div><br>
                     </div><br>
                     <div style="float: left;">
-                        <button type="submit" class="btn btn-success">Update</button>
-                        <button type="cancel" class="btn btn-danger">Cancel</button>
+                        <button type="submit" class="btn btn-success" style="border: none">Update</button>
+                        <button type="cancel" class="btn btn-danger" style="border: none">Discard</button>
                     </div>
                 </div>
             </div>
         </form>
+        <br>
+        <hr><br>
+
+        <h2>Crew Application</h2>
+        <table id="dataTable" class="table table-bordered mt-3">
+            <thead>
+                <tr class="text-center">
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($crewApplications as $application)
+                    <tr class="text-center">
+                        <td>{{ $application->event->name }}</td>
+                        <td>
+                            @if ($application->event->startDate === $application->event->endDate)
+                                {{ $application->event->startDate }}
+                            @else
+                                {{ $application->event->startDate }} - {{ $application->event->endDate }}
+                            @endif
+                        </td>
+                        <td>{{ $application->status }}</td>
+                        <td>
+                            @if ($application->status !== 'Approved')
+                                <a href="/CrewWithdraw/{{ $application->id }}">
+                                    <button type="cancel" class="btn btn-danger" style="border: none">Withdraw</button>
+                                </a>
+                            @else
+                                <button class="btn btn-danger" disabled>Withdraw</button>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-    <hr>
+
 
     <script>
         document.getElementById('profileImageInput').addEventListener('change', function(event) {
@@ -64,5 +102,4 @@
             }
         });
     </script>
-
 @endsection

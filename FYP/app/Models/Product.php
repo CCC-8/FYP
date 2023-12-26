@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'price'];
+    protected $fillable = ['user_id', 'name', 'type', 'price', 'image', 'description', 'condition', 'status'];
+    public $timestamps = false;
 
     public function dealer()
     {

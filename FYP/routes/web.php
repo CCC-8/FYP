@@ -6,6 +6,7 @@ use App\Http\Controllers\EventVenueController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\DealerController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 // ------------------------------- Organizer Routes -------------------------------
@@ -27,20 +28,19 @@ Route::get('/CreateEvent', function () {
 Route::post('/CreateNewEvent', [EventController::class, 'store']);
 Route::get('/EditEventDetails/{eventId}', [EventController::class, 'editEventDetails']);
 Route::post('/EditEventDetails/{eventId}', [EventController::class, 'updateEventDetails']);
+Route::get('/DeleteEvent/{eventId}', [EventController::class, 'deleteEvent']);
 
-Route::get('/DealershipManagement', function () {
-    return DealerController::showDealers();
-});
+Route::get('/DealershipManagement', [DealerController::class, 'showDealers']);
+Route::get('/ProductManagement/{dealerId}', [ProductController::class, 'showProducts']);
 
 Route::get('/VenueManagement', function () {
     return view('Organizer/VenueManagement');
 });
-
 Route::post('/CreateNewVenue', [VenueController::class, 'store']);
 
 Route::get('/CrewManagement/{eventId}', [CrewController::class, 'crewManagement']);
-Route::post('/approveApplication/{crewId}', [CrewController::class, 'approveApplication']);
-Route::post('/rejectApplication/{crewId}', [CrewController::class, 'rejectApplication']);
+Route::post('/approveApplication/{crewId}/{eventId}', [CrewController::class, 'approveApplication']);
+Route::post('/rejectApplication/{crewId}/{eventId}', [CrewController::class, 'rejectApplication']);
 
 Route::get('/Calendar', [EventController::class, 'calendar_events']);
 
@@ -57,7 +57,6 @@ Route::post('/OrganizerLogin', [UserController::class, 'organizerLogin']);
 Route::get('/OrganizerRegister', function () {
     return view('Organizer/OrganizerRegister');
 });
-
 Route::post('/OrganizerRegister', [UserController::class, 'organizerRegister']);
 
 // ------------------------------- Dealer Routes -------------------------------
@@ -65,6 +64,7 @@ Route::post('/OrganizerRegister', [UserController::class, 'organizerRegister']);
 Route::get('/DealerIndex', function () {
     return view('Dealer/DealerIndex');
 });
+Route::get('/DealerIndex', [ProductController::class, 'displayProducts']);
 
 Route::post('/EditDealerProfile', [UserController::class, 'editDealerProfile']);
 
@@ -79,6 +79,13 @@ Route::get('/DealerRegister', function () {
 });
 Route::post('/DealerRegister', [UserController::class, 'dealerRegister']);
 
+Route::get('/AddProduct', function () {
+    return view('Dealer/AddProduct');
+});
+Route::post('/AddNewProduct', [ProductController::class, 'addProduct']);
+Route::get('/EditProductDetails/{id}', [ProductController::class, 'editProductDetails']);
+Route::post('/UpdateProduct/{id}', [ProductController::class, 'updateProduct']);
+
 // ------------------------------- User Routes -------------------------------
 
 Route::get('/UserIndex', function () {
@@ -86,9 +93,7 @@ Route::get('/UserIndex', function () {
 });
 Route::get('/UserIndex', [EventController::class, 'show_events']);
 
-Route::get('/UserProfile', function () {
-    return view('User/UserProfile');
-});
+Route::get('/UserProfile', [CrewController::class, 'showUserProfile']);
 Route::post('/EditUserProfile', [UserController::class, 'editUserProfile']);
 
 Route::get('/Events', function () {
@@ -96,7 +101,9 @@ Route::get('/Events', function () {
 });
 Route::get('/EventDetails/{id}', [EventController::class, 'event_details']);
 
-Route::get('/CrewApplication/{userId}/{eventId}', [EventController::class, 'crewApplication']);
+Route::get('/CrewApplication/{id}', [EventController::class, 'displayCrewApplicationForm']);
+Route::post('/SubmitApplication/{userId}/{eventId}', [CrewController::class, 'crewApplication']);
+Route::get('/CrewWithdraw/{applicationId}', [CrewController::class, 'withdrawApplication']);
 
 Route::get('/UserLogin', function () {
     return view('User/UserLogin');

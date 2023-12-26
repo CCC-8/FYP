@@ -2,7 +2,7 @@
 @section('body')
     <div class="container bootstrap snippets bootdey pt-5 pl-4">
         <h1 class="text-primary">Event Management</h1>
-        <a href="/CreateEvent">Create New Event</a>
+        <a href="/CreateEvent"><button class="btn btn-primary">+ New Event</button></a>
         <hr>
         @if (session('success'))
             <div class="alert alert-success">
@@ -50,8 +50,16 @@
                                 </button>
                             </a>
                             <a href="/CrewManagement/{{ $event->id }}">
+                                <button type="submit" class="btn btn-primary">
+                                    <img width="25" height="25"
+                                        src="https://img.icons8.com/windows/32/standing-man.png" />
+                                </button>
+                            </a>
+                            <a href="/DeleteEvent/{{ $event->id }}"
+                                onclick="confirmDelete(event, {{ $event->id }})">
                                 <button type="submit" class="btn btn-danger">
-                                    <img width="25" height="25" src="https://img.icons8.com/windows/24/work.png" />
+                                    <img width="25" height="25"
+                                        src="https://img.icons8.com/fluency-systems-regular/48/delete-forever.png" />
                                 </button>
                             </a>
                         </td>
@@ -60,4 +68,15 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        function confirmDelete(event, eventId) {
+            event.preventDefault();
+            if (confirm('Are you sure you want to delete this event?')) {
+                window.location.href = `/DeleteEvent/${eventId}`;
+            } else {
+                return false;
+            }
+        }
+    </script>
 @endsection

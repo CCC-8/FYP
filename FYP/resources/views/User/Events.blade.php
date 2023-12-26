@@ -1,7 +1,6 @@
 @extends('User/_USER')
 @section('body')
     <main id="main">
-
         <!-- ======= Event Section ======= -->
         <section id="event-details" class="event-details" style="padding-top: 10%">
             <div class="container">
@@ -11,7 +10,7 @@
                             <div class="card">
                                 <div class="event-img">
                                     <a href="EventDetails/{{ $event->id }}">
-                                        <img class="card-img-top" src="assets/img/testimg1.jpg"></a>
+                                        <img class="card-img-top" src="/images/{{ $event->eventImage }}"></a>
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $event->name }}</h5>
@@ -20,10 +19,8 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </section>
-
     </main>
 @endsection

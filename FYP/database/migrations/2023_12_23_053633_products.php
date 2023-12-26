@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crews', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('event_id');
-            $table->string('status');
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->string('type'); // vehicle, tyre, etc.
+            $table->string('name');
+            $table->string('status')->nullable(); // Reserved, Received, Returned
+            $table->string('condition')->nullable(); // Good, Defected
+            $table->string('description');
+            $table->integer('price');
+            $table->string('image'); // File path for image
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crews');
+        Schema::dropIfExists('products');
     }
 };

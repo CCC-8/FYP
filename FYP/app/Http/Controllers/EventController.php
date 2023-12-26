@@ -30,20 +30,20 @@ class EventController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'startDate' => 'required|date',
+            'startDate' => 'required|date|after_or_equal:today',
             'startTime' => 'required|regex:/^\d{2}:\d{2}$/',
-            'endDate' => 'required|date',
+            'endDate' => 'required|date|after_or_equal:startDate',
             'endTime' => 'required|regex:/^\d{2}:\d{2}$/',
             'status' => 'required|string',
             'venue' => 'required|string|in:South Paddock,Paddock Chalet,North Paddock,Paddock Club,Perdana Suite',
             'type' => 'required|in:Public,Private',
             'eventImage' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
-            // Custom error messages for each field
             'startTime.regex' => 'The start time must be in 00:00 format.',
             'endTime.regex' => 'The end time must be in 00:00 format.',
             'venue.in' => 'Please select a valid venue.',
-            // Add more custom error messages for other fields if needed
+            'startDate.after_or_equal' => 'Start date must not be before today.',
+            'endDate.after_or_equal' => 'End date must not be before the start date.',
         ]);
 
         // Validate venue availability
@@ -114,13 +114,11 @@ class EventController extends Controller
             'venue' => 'required|string|in:South Paddock,Paddock Chalet,North Paddock,Paddock Club,Perdana Suite',
             'eventImage' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
-            // Custom error messages for each field
             'startTime.regex' => 'The start time must be in 00:00 format.',
             'endTime.regex' => 'The end time must be in 00:00 format.',
             'eventImage.in' => 'Please select a valid image.',
             'startDate.after_or_equal' => 'Start date must not be before today.',
             'endDate.after_or_equal' => 'End date must not be before the start date.',
-            // Add more custom error messages for other fields if needed
         ]);
 
         if ($request->hasFile('eventImage')) {
@@ -208,7 +206,15 @@ class EventController extends Controller
 
     public function deleteEvent($eventId)
     {
-        // Handle event deletion logic
+        $event = Event::find($eventId);
+
+        if (!$event) {
+            return redirect()->back()->with('error', 'Event not found.');
+        }
+
+        $event->delete();
+
+        return redirect()->back()->with('success', 'Event deleted successfully.');
     }
 
     // ---------------------------- User ---------------------------- 
@@ -231,25 +237,9 @@ class EventController extends Controller
         return view('User/EventDetails', compact('id', 'event'));
     }
 
-    public function crewApplication($userId, $eventId)
+    public function displayCrewApplicationForm(Request $request, $id)
     {
-        $user = User::find($userId);
-        $event = Event::find($eventId);
-
-        $existingApplication = Crew::where('user_id', $userId)->where('event_id', $eventId)->first();
-
-        if ($existingApplication) {
-            return redirect()->back()->with('error', 'You have already applied as crew for this event.');
-        }
-
-        $crew = new Crew([
-            'user_id' => $user->id,
-            'event_id' => $event->id,
-            'status' => 'Pending'
-        ]);
-
-        $crew->save();
-
-        return redirect()->back()->with('success', 'Applied as crew successfully.');
+        $event = Event::find($id);
+        return view('User/CrewApplication', compact('id', 'event'));
     }
 }

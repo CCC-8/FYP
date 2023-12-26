@@ -39,15 +39,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="confirm_password" id="confirm_password" placeholder="Repeat your password" />
+                                <input type="password" name="confirm_password" id="confirm_password"
+                                    placeholder="Repeat your password" />
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                                <input type="submit" name="signup" id="signup" class="form-submit"
+                                    value="Register" />
                             </div>
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="/DealerAssets/img/dealerregister.jpg"
+                                style="height: 400px; width: 300px; object-fit: cover; transform: translate3d(0, 0, 1px);">
+                        </figure>
                         <a href="/DealerLogin" class="signup-image-link">Already have an account</a>
                     </div>
                 </div>
