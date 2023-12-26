@@ -44,6 +44,8 @@
                                 @else
                                     <button class="btn btn-secondary mt-3" disabled>Pending for Approval</button>
                                 @endif
+                            @elseif(strtotime($event->startDate) <= strtotime('today'))
+                                <button class="btn btn-dark mt-3" disabled>Event Expired</button>
                             @else
                                 <a href="/CrewApplication/{{ $event->id }}">
                                     <button class="btn btn-warning mt-3">Join As Crew</button>

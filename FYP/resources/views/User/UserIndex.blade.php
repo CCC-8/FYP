@@ -8,11 +8,6 @@
                 <div class="col-lg-8">
                     <h1>Welcome to <span>Speedy</span></h1>
                     <h2>Ignite your passion for car racing and embark on an exciting journey!</h2>
-
-                    <div class="btns">
-                        <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
-                        <a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Book a Table</a>
-                    </div>
                 </div>
 
             </div>
@@ -27,7 +22,7 @@
 
                 <div class="section-title">
                     <h2>Events</h2>
-                    <p>Our Upcoming Events</p>
+                    <p>Our Events</p>
                 </div>
 
                 <div class="row">
@@ -59,5 +54,4 @@
         </section><!-- End Chefs Section -->
 
     </main><!-- End #main -->
-
 @endsection
